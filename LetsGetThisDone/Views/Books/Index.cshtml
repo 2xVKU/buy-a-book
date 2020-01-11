@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FirstTry.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p style="padding-left: 15px">
+    @Html.ActionLink("Креирај нова книга", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p style="padding-left: 15px">
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-9 col-md-6 col-lg-3 my-3">
+                <a href="@Url.Action("Details", "Books", new { id = item.ISBN })">
+                    <img src="@item.Img" style="width:250px; height:250px">
+                </a>
+                <span>Наслов: </span>@Html.DisplayFor(modelItem => item.Title)<br />
+                <span>Цена: </span>@Html.DisplayFor(modelItem => item.Price)<br />
+                <span>Издадена: </span>@Html.DisplayFor(modelItem => item.Year)<br />
+                <span>Жанр: </span>@Html.DisplayFor(modelItem => item.Genre)
+            </div>
+        }
+    </div>
+</div>
+

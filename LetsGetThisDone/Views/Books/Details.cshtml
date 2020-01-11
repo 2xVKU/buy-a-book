@@ -1,0 +1,35 @@
+﻿@model FirstTry.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/MyStyleSheet.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div>
+                <img class="d-block" src=" @Html.DisplayFor(model => model.Img)" style="width:500px; height:450px">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h2 style="padding-bottom: 30px; padding-left: 30px">@Html.DisplayFor(model => model.Title)</h2>
+            <h4 style="padding-bottom: 30px; padding-left: 30px">Цена: @Html.DisplayFor(model => model.Price)<span>ден</span></h4>
+            <h4 style="padding-bottom: 30px; padding-left: 30px">Издадена: @Html.DisplayFor(model => model.Year)</h4>
+            <h4 style="padding-bottom: 30px; padding-left: 30px">Жанр: @Html.DisplayFor(model => model.Genre)</h4>
+            <button type="button" class="btn btn-default" style="background: #fe980f; color: #ffffff; margin-left: 30px">Add to Cart</button>
+            <button type="button" class="btn btn-default" style="background: #fe980f; color: #ffffff">
+                @Html.ActionLink("Назад", "Index")
+            </button>
+            <p style="padding-top: 30px; margin-left: 30px">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ISBN })
+            </p>
+            <p style="padding-top: 30px; margin-left: 30px">
+                @Html.ActionLink("Delete", "Delete", new { id = Model.ISBN })
+            </p>
+        </div>
+    </div>
+</div>
